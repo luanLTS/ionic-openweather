@@ -1,0 +1,7 @@
+{
+  "name": "'ionic-openweather'",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

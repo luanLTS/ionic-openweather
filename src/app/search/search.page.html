@@ -1,0 +1,50 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10">
+        <ion-searchbar placeholder="Buscar cidade, estado ou pais" [debounce]="500" #searchTerm
+          (ionInput)="onSearchWeather(searchTerm.value)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center" *ngIf="isLoading">
+      <ion-col size="1">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center" *ngIf="cityNotFound">
+      <ion-col size="10">
+        <ion-title> Cidade, estado ou pais não encontrado!</ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center" *ngIf="weatherInfoCity.temp !== ''">
+      <ion-col size="10">
+        <ion-card color="medium">
+          <ion-card-header>
+            <ion-card-title>{{searchTerm.value | titlecase}}</ion-card-title>
+            <ion-card-subtitle>{{weatherInfoCity.description | titlecase}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row class="ion-justify-content-center ion-align-items-center">
+                <ion-col size="3">
+                  <ion-img [src]="weatherInfoCity.url_icon"></ion-img>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-title>{{weatherInfoCity.temp}}°C</ion-title>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-justify-content-center ion-align-items-center">
+                <ion-col size="3">
+                  Min: {{weatherInfoCity.temp_min}}°C
+                </ion-col>
+                <ion-col size="3">
+                  Max: {{weatherInfoCity.temp_max}}°C
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

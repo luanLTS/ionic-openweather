@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-segment value="search" (ionChange)="onChangeSegment($event)">
+    <ion-segment-button value="search">
+      <ion-icon name="search" />
+    </ion-segment-button>
+    <ion-segment-button value="history">
+      <ion-icon name="time-outline" />
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
